@@ -1,0 +1,4 @@
+/.next
+/.serverless
+/out
+package-lock.json
