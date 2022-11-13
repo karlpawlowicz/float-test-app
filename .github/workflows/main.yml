@@ -4,7 +4,7 @@ on: push
 
 jobs:
   build:
-    name: Build
+    name: Test
     runs-on: ubuntu-latest
 
     steps:
@@ -31,15 +31,8 @@ jobs:
       - name: Lint
         run: npm run lint
 
+      - name: Type check
+        run: npm run type-check
+
       - name: Test
         run: npm run test:ci
-
-      - name: Build
-        run: npm run build
-
-      - name: Deploy
-        if: contains(github.ref, 'main')
-        run: npm run deploy
-        env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
