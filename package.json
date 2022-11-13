@@ -14,7 +14,7 @@
     "url": "https://github.com/karlpawlowicz/float-test-app/issues"
   },
   "scripts": {
-    "build": "next build && next export",
+    "build": "next build",
     "deploy": "serverless deploy",
     "dev": "next dev",
     "format": "prettier --write \"**/*.{cjs,css,js,json,jsx,md,mjs,scss,ts,tsx,yml}\"",
@@ -24,7 +24,8 @@
     "prepare": "husky install && npx next telemetry disable",
     "start": "next start",
     "test": "jest --watch",
-    "test:ci": "jest --ci"
+    "test:ci": "jest --ci",
+    "type-check": "tsc"
   },
   "dependencies": {
     "next": "^12.3.0",
