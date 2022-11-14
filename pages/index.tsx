@@ -5,6 +5,7 @@ import Head from 'next/head';
 import { GlobalContext } from 'context/GlobalContext';
 import { Tag, Team } from 'types/transactions';
 import DropDown from 'components/DropDown';
+import TransactionsLineChart from 'components/TransactionLineChart';
 
 import styles from 'styles/Home.module.css';
 
@@ -131,6 +132,7 @@ const Home: NextPage = () => {
               label={'Teams'}
               onClick={handleTeamsClick}
             />
+            <TransactionsLineChart />
           </>
         )}
       </main>
