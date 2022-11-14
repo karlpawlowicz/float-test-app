@@ -67,25 +67,25 @@ export default function handler(
     const endDate = new Date(end_date);
 
     filteredTransactions = filteredTransactions.filter(
-      (element) =>
-        new Date(element.date).getTime() >= startDate.getTime() &&
-        new Date(element.date).getTime() <= endDate.getTime()
+      (transaction) =>
+        new Date(transaction.date).getTime() >= startDate.getTime() &&
+        new Date(transaction.date).getTime() <= endDate.getTime()
     );
   }
 
   if (tags && typeof tags === 'string') {
     const tagsArr = tags.split(',');
 
-    filteredTransactions = filteredTransactions.filter((element) =>
-      element.tags.some((element) => tagsArr.includes(element))
+    filteredTransactions = filteredTransactions.filter((transaction) =>
+      transaction.tags.some((transaction) => tagsArr.includes(transaction))
     );
   }
 
   if (teams && typeof teams === 'string') {
     const teamsArr = teams.split(',');
 
-    filteredTransactions = filteredTransactions.filter((element) =>
-      element.teams.some((element) => teamsArr.includes(element))
+    filteredTransactions = filteredTransactions.filter((transaction) =>
+      transaction.teams.some((transaction) => teamsArr.includes(transaction))
     );
   }
 

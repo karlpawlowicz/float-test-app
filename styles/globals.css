@@ -1,26 +1,24 @@
-html,
-body {
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+@font-face {
+  font-display: block;
+  font-family: 'Inter';
+  font-named-instance: 'Regular';
+  font-style: normal;
+  font-weight: 100 900;
+  src: url('/fonts/Inter-roman.var.woff2') format('woff2');
+}
+@font-face {
+  font-display: block;
+  font-family: 'Inter';
+  font-named-instance: 'Italic';
+  font-style: italic;
+  font-weight: 100 900;
+  src: url('/fonts/Inter-italic.var.woff2') format('woff2');
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-* {
-  box-sizing: border-box;
-}
-
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
-  body {
-    color: white;
-    background: black;
-  }
+#__next {
+  min-height: 100%;
 }
