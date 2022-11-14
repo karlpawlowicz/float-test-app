@@ -16,8 +16,8 @@ const Home: NextPage = () => {
         ? 'http://localhost:3000/api'
         : 'https://float-test-app.vercel.app/api';
     const urls = [`${url}/tags`, `${url}/teams`, `${url}/transactions`];
-    let responses = null;
-    let data: any = null;
+    let responses;
+    let data;
 
     dispatch({
       type: 'SET_TAGS_PENDING',
@@ -38,9 +38,9 @@ const Home: NextPage = () => {
       console.error(error);
     }
 
-    const tagsData = data[0]?.data?.tags;
-    const teamsData = data[1]?.data?.teams;
-    const transactionsData = data[2]?.data?.transactions;
+    const tagsData = data && data[0]?.data?.tags;
+    const teamsData = data && data[1]?.data?.teams;
+    const transactionsData = data && data[2]?.data?.transactions;
 
     dispatch({
       payload: {
@@ -83,7 +83,7 @@ const Home: NextPage = () => {
   };
 
   useEffect(() => {
-    fetchData().catch((error: any) => console.error(error));
+    fetchData().catch((error) => console.error(error));
   }, [fetchData]);
 
   useEffect(() => {
