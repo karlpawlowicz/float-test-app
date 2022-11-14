@@ -3,6 +3,8 @@ import { useCallback, useContext, useEffect } from 'react';
 import Head from 'next/head';
 
 import { GlobalContext } from 'context/GlobalContext';
+import { Tag, Team } from 'types/transactions';
+import DropDown from 'components/DropDown';
 
 import styles from 'styles/Home.module.css';
 
@@ -65,11 +67,28 @@ const Home: NextPage = () => {
   const isPending = () =>
     tags.isPending || teams.isPending || transactions.isPending;
 
-  const handleClick = async () => {
+  const handleTagsClick = async (tag: Tag) => {
     const url =
       process.env.NODE_ENV !== 'production'
-        ? 'http://localhost:3000/api/transactions?teams=engineering'
-        : 'https://float-test-app.vercel.app/api/transactions?teams=engineering';
+        ? `http://localhost:3000/api/transactions?tags=${tag}`
+        : `https://float-test-app.vercel.app/api/transactions?tags=${tag}`;
+    const response = await fetch(url);
+    const data = await response.json();
+    const transactionsData = data?.data?.transactions;
+
+    dispatch({
+      payload: {
+        transactionsData,
+      },
+      type: 'SET_TRANSACTIONS',
+    });
+  };
+
+  const handleTeamsClick = async (team: Team) => {
+    const url =
+      process.env.NODE_ENV !== 'production'
+        ? `http://localhost:3000/api/transactions?teams=${team}`
+        : `https://float-test-app.vercel.app/api/transactions?teams=${team}`;
     const response = await fetch(url);
     const data = await response.json();
     const transactionsData = data?.data?.transactions;
@@ -102,14 +121,16 @@ const Home: NextPage = () => {
           <div>Loading...</div>
         ) : (
           <>
-            <button
-              onClick={() => {
-                void handleClick();
-              }}
-            >
-              Filter
-            </button>
-            {JSON.stringify(transactions)}
+            <DropDown
+              items={tags.tagsData}
+              label={'Tags'}
+              onClick={handleTagsClick}
+            />
+            <DropDown
+              items={teams.teamsData}
+              label={'Teams'}
+              onClick={handleTeamsClick}
+            />
           </>
         )}
       </main>
