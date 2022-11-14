@@ -1,8 +1,10 @@
 ## Solution
 
-- User should be able to filter transactions by date, tags, and teams. The date filter UI should be user-friendly, such as a calendar. Tags and teams UI should be dropdowns and allow multiple selections.
-- Line chart should be responsive, work across different devices/screens and using assistive technology such as a screen reader.
 - Loading and error states should communicate to the user when data is being fetched and if an error occurs.
+- User should be able to filter transactions by date, tags, and teams. The date filter UI should be user-friendly, such as a calendar. Tags and teams UI should be dropdowns and allow multiple selections.
+- Date filter should have an initial value (e.g., one year).
+- Tags and teams filters should have an initial value (e.g., all).
+- Line chart should be responsive, work across different devices/screens and using assistive technology such as a screen reader.
 - Each type of data (tags, teams, transactions) should get its own “table” in the state:
 
 ```shell
@@ -23,8 +25,6 @@ transactions: {
 },
 ```
 
-- Date filter should have an initial value (e.g., one year).
-- Tags and teams filters should have an initial value (e.g., all).
 - Tags and teams data will populate the filter dropdown options.
 - On page load, fetch tags, teams, and transactions.
 - Filter data on the backend using the transaction endpoint params.
@@ -43,17 +43,9 @@ feat/add-state-and-ui
 feat/add-graph
 ```
 
-6. Start with mocking API endpoints using https://mswjs.io/ (after spending ~30 min, decided to use Next.js API routes/deploy to Vercel for SSR support):
-
-- https://github.com/karlpawlowicz/float-test-app/pull/1
-
-7. Add state using context and dropdown UI using Tailwind:
-
-- https://github.com/karlpawlowicz/float-test-app/pull/2
-
-8. Add line chart using Recharts and the https://recharts.org/en-US/examples example:
-
-- https://github.com/karlpawlowicz/float-test-app/pull/3
+6. Start with mocking API endpoints using https://mswjs.io/ (after spending ~30 min, decided to use Next.js API routes/deploy to Vercel for SSR support) (PR: https://github.com/karlpawlowicz/float-test-app/pull/1).
+7. Add state using context and dropdown UI using Tailwind (PR: https://github.com/karlpawlowicz/float-test-app/pull/2).
+8. Add line chart using Recharts and the https://recharts.org/en-US/examples example (PR: https://github.com/karlpawlowicz/float-test-app/pull/3).
 
 ## TODO
 
